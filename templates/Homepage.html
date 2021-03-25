@@ -1,0 +1,181 @@
+{%extends "Layout.html"%}
+{%block content%}
+<style>
+table, th, td {
+  border: 0;
+  padding: 5px;
+}
+table {
+  border-spacing: 15px;
+}
+</style>
+<div class="admin">
+<div class='jumbotron' style="background-color:#e1dfed;">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+      <div class="text-danger">
+        <b>  {{ messages[0] }}   </b>
+      </div>
+  {% endif %}
+  {% endwith %}
+<div class="container" style="background-color:#e1dfed;">
+<p style="color:blue;">Customer Details</p>
+<form method="POST" action="/createCustomerDetails">
+
+<input  type="text" hidden name="clientID" >
+
+<br>
+
+<div class="row" >
+      <!-- <div class="row"> -->
+          <div class="col-md-5">
+              <label class="font-weight-bold" for="name">Customer Name</label>
+              <input class="form-control" type="text" size="5" name="name" maxlength="100" placeholder="Enter Name" >
+          </div>
+
+          <div class="col-md-5">
+            <label class="font-weight-bold" for="phno">Client Mobile No</label>
+              <input class="form-control" type="text" name="phno" maxlength="40" placeholder="Enter Contact No" >
+          </div>
+
+</div>
+      <div class="row" >
+        <div class="col-md-5">
+            <label class="font-weight-bold" for="email">E-mail</label>
+            <input class="form-control" type="email"  name="email" maxlength="40" placeholder="Enter E Mail" >
+        </div>
+
+        <div class="col-md-5">
+          <label class="font-weight-bold" for="address">Address</label>
+            <input class="form-control" type="text" name="address" maxlength="50" placeholder="Enter Address" >
+        </div>
+        </div>
+        <div class="row" >
+          <div class="col-md-5">
+              <label class="font-weight-bold" for="bankname">Bank Name</label>
+              <input class="form-control" type="text"  name="bankname" maxlength="30" placeholder="Enter Bank Name" >
+          </div>
+
+          <div class="col-md-5">
+            <label class="font-weight-bold" for="bankbranch">Bank Branch</label>
+              <input class="form-control" type="text" name="bankbranch" maxlength="30" placeholder="Enter Bank Branch" >
+          </div>
+          </div>
+          <div class="row" >
+            <div class="col-md-5">
+                <label class="font-weight-bold" for="ifsccode">IFSC Code</label>
+                <input class="form-control" type="text"  name="ifsccode" maxlength="30" placeholder="Enter IFSC Code" >
+            </div>
+
+          <div class="col-md-5">
+            <label class="font-weight-bold" for="accno">Account No</label>
+              <input class="form-control" type="text" name="accno" maxlength="50" placeholder="Enter Account No" >
+          </div>
+          </div>
+          <div class="row" >
+            <div class="col-md-5">
+                <label class="font-weight-bold" for="gstno">GST NO</label>
+                <input class="form-control" type="text"  name="gstno" maxlength="30" placeholder="Enter GST No" >
+            </div>
+            <div class="col-md-5">
+
+
+
+                  <label >Customer Category</label>
+
+                    <select class="form-control" id =custType>
+                      <option value="Select Category">Select Category</option>
+                      {% for value in customerType %}
+                        <option value="{{value.Cust_Type_Id}}">{{value.Type_Description}}</option>
+                      {% endfor %}
+                    </select>
+                    <input  type="text" hidden name="customerType" >
+            </div>
+          </div>
+          <div class="row" >
+                <!-- <div class="row"> -->
+                    <div class="col-md-5">
+                      <label for="comments">Comments</label>
+                       <textarea class="form-control" name="comments" rows="3"></textarea>
+                    </div>
+
+
+          </div>
+      
+
+            <br>
+            <div class="row">
+              <br>
+              <!-- </form> -->
+                <div class="col-xs-6 col-sm-1 col-md-push-4">
+              <!-- <div class="text-center">  -->
+
+            <a href=# id=submit_data><button  class="btn btn-primary" ><span class="glyphicon glyphicon-th-list"></span>&nbsp;Create Client Account</button></a>
+                </div>
+
+            </div>
+    <!-- </form> -->
+  </div>
+  </div>
+  </div>
+
+</body>
+
+<script type=text/javascript>
+  $( document ).ready(function() {
+
+     $('#process_input').click(function() {
+
+
+      var fname      =   $('input[name="fname"]').val();
+      var lname      =   $('input[name="lname"]').val();
+      var mobileno  =   $('input[name="mobileno"]').val();
+      var state      =   $('input[name="state"]').val();
+      var religion     =   $('input[name="religion"]').val();
+      var class1     =   $('input[name="class1"]').val();
+      var model     =   $('input[name="model"]').val();
+      var carManu     =   $('input[name="carManu"]').val();
+      var year    =   $('input[name="year"]').val();
+
+
+                if (name == '' || lastName=='')
+                {
+                  alert('Please Enter Name')
+                }
+                // if (lastName == ''  )
+                // {
+                //   alert('please last name')
+                // }
+                if (mobileno == ''  )
+                {
+                  alert('Please Enter Mobile Number')
+                }
+                if (state == ''  )
+                {
+                  alert('Please Enter State')
+                }
+                if (religion == ''  )
+                {
+                  alert('Please Enter Religion')
+                }
+                if (class1 == ''  )
+                {
+                  alert('Please Enter Class')
+                }
+                if (model == ''  )
+                {
+                  alert('Please Enter Model')
+                }
+                if (carManu == ''  )
+                {
+                  alert('Please Enter Manufacturer')
+                }
+                if (year == ''  )
+                {
+                  alert('Please Enter Year')
+                }
+
+            });
+});
+</script>
+{%endblock%}
